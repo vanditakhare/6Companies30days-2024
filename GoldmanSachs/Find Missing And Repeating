@@ -1,0 +1,23 @@
+class Solution{
+public:
+    vector<int> findTwoElement(vector<int> arr, int n) {
+        map<int,int>p;
+        vector<int>ans;
+        for(int i=0;i<n;i++){
+            p[arr[i]]++;
+        }
+        for(auto i:p){
+            if(i.second==2){
+            ans.push_back(i.first);
+                break;
+            }
+        }
+         for (int i = 1; i <= n; i++) {
+            if (p.find(i) == p.end()) {
+                ans.push_back(i);
+                break;
+            }
+        }
+        return ans;
+    }
+};
