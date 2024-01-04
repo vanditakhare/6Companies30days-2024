@@ -1,0 +1,29 @@
+class Solution {
+public:
+    void sol(int i,int n,string digits, vector<string>&ans,vector<string>o,string s){
+        if(i>=n){
+            ans.push_back(s);
+            return;
+        }
+        int d=digits[i]-'0';
+        string val=o[d];
+        for(int j=0;j<val.size();j++){
+            s+=val[j];
+            sol(i+1,n,digits,ans,o,s);
+            s.pop_back();
+            
+        }
+        
+    }
+    vector<string> letterCombinations(string digits) {
+         vector<string>ans;
+        int n=digits.size();
+        if(n==0)
+            return ans;
+         vector<string>o={"","","abc","def","ghi","jkl","mno","pqrs","tuv","wxyz"};
+        string s="";
+        sol(0,n,digits,ans,o,s);
+        return ans;
+        
+    }
+};
