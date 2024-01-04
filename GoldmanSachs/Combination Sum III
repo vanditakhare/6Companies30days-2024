@@ -1,0 +1,30 @@
+class Solution {
+public:
+    void sol(int t,int k, int n, vector<vector<int>>&ans,vector<int>&o, int p[],int &sum){
+        if(k==0){
+            if(sum==n){
+                sort(o.begin(), o.end());
+               ans.push_back(o);
+               
+            }
+             return;
+        }
+        for(int i=t;i<9;i++){
+            sum+=p[i];
+             o.push_back(p[i]);
+             sol(i+1,k-1,n,ans,o,p,sum);
+            sum-=p[i];
+            o.pop_back();
+        }
+        return ;
+        
+    }
+    vector<vector<int>> combinationSum3(int k, int n) {
+        vector<vector<int>>ans;
+        vector<int>o;
+        int p[9]={1,2,3,4,5,6,7,8,9};
+        int sum=0;
+        sol(0,k,n,ans,o,p,sum);
+        return ans;
+    }
+};
